@@ -17,7 +17,7 @@
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="1.0.0" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Prometheus.Client.Owin.csproj" />
+    <ProjectReference Include="..\..\src\Prometheus.Client.Owin\Prometheus.Client.Owin.csproj" />
   </ItemGroup>
 
 </Project>

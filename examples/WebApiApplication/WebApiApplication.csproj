@@ -168,8 +168,8 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Prometheus.Client.Owin.csproj">
-      <Project>{563fc91b-e162-4ed5-ad44-9d158bbd131a}</Project>
+    <ProjectReference Include="..\..\src\Prometheus.Client.Owin\Prometheus.Client.Owin.csproj">
+      <Project>{1a520089-1c20-4acf-b4f6-b7d471297d78}</Project>
       <Name>Prometheus.Client.Owin</Name>
     </ProjectReference>
   </ItemGroup>
