@@ -10,7 +10,8 @@
     <AssemblyName>Prometheus.Client.Owin</AssemblyName>
     <PackageId>Prometheus.Client.Owin</PackageId>
     <PackageTags>prometheus;metrics</PackageTags>
-    <PackageProjectUrl>https://github.com/phnx47/Prometheus.Client</PackageProjectUrl>
+    <PackageIconUrl>https://image.ibb.co/k4Sc0k/prometheus.png</PackageIconUrl>
+    <PackageProjectUrl>https://github.com/phnx47/Prometheus.Client.Owin</PackageProjectUrl>
     <PackageLicenseUrl>https://opensource.org/licenses/MIT</PackageLicenseUrl>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/phnx47/Prometheus.Client</RepositoryUrl>
