@@ -1,22 +1,27 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
 using Prometheus.Client.Advanced;
-
 #if COREFX
-
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Primitives;
 
 #else
 using Owin;
+
 #endif
 
 namespace Prometheus.Client.Owin
 {
+    /// <summary>
+    ///     PrometheusExtensions
+    /// </summary>
     public static class PrometheusExtensions
     {
 #if COREFX
 
+        /// <summary>
+        ///     Add PrometheusServer request execution pipeline.
+        /// </summary>
         public static IApplicationBuilder UsePrometheusServer(this IApplicationBuilder app, PrometheusOptions options = null)
         {
             if (options == null)
@@ -57,7 +62,9 @@ namespace Prometheus.Client.Owin
         }
 
 #else
-
+        /// <summary>
+        ///     Add PrometheusServer request execution pipeline.
+        /// </summary>
         public static IAppBuilder UsePrometheusServer(this IAppBuilder app, PrometheusOptions options = null)
         {
             if (options == null)
@@ -96,6 +103,7 @@ namespace Prometheus.Client.Owin
 
             return app;
         }
+
 #endif
     }
 }
