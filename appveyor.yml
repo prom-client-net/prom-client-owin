@@ -5,7 +5,7 @@ build_script:
 artifacts:
 - path: '**\*.nupkg'
   name: All Nupkg
-deploy
+deploy:
 - provider: NuGet
   api_key:
     secure: vukCl5k+S4fJtqeYNiB9ufy/NUCw+60cPcqnPoqvykBjSo8Ub8QtEfZNN9qvj5Jh
