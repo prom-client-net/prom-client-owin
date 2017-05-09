@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
-using Prometheus.Client.Advanced;
+using Prometheus.Client.Collectors;
 #if COREFX
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Primitives;

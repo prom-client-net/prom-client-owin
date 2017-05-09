@@ -1,5 +1,6 @@
-﻿using System.Collections.Generic;
-using Prometheus.Client.Advanced;
+﻿using System;
+using System.Collections.Generic;
+using Prometheus.Client.Collectors;
 
 namespace Prometheus.Client.Owin
 {
@@ -14,6 +15,10 @@ namespace Prometheus.Client.Owin
         public IEnumerable<IOnDemandCollector> Get()
         {
             yield return new DotNetStatsCollector();
+#if !COREFX
+            if (Environment.OSVersion.Platform != PlatformID.Unix)
+                yield return new WindowsDotNetStatsCollector();
+#endif
         }
     }
 }
