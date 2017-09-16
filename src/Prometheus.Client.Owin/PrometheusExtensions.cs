@@ -23,7 +23,7 @@ namespace Prometheus.Client.Owin
         /// </summary>
         public static IApplicationBuilder UsePrometheusServer(this IApplicationBuilder app)
         {
-            return UsePrometheusServer(app, null);
+            return UsePrometheusServer(app, new PrometheusOptions());
         }
         
         /// <summary>
@@ -31,9 +31,6 @@ namespace Prometheus.Client.Owin
         /// </summary>
         public static IApplicationBuilder UsePrometheusServer(this IApplicationBuilder app, PrometheusOptions options)
         {
-            if (options == null)
-                options = new PrometheusOptions();
-
             if (options.CollectorRegistryInstance == CollectorRegistry.Instance)
             {
                 if (options.Collectors != null && !options.Collectors.Any() && options.UseDefaultCollectors)
@@ -49,8 +46,7 @@ namespace Prometheus.Client.Owin
                     var req = context.Request;
                     var response = context.Response;
 
-                    StringValues acceptHeaders;
-                    req.Headers.TryGetValue("Accept", out acceptHeaders);
+                    req.Headers.TryGetValue("Accept", out var acceptHeaders);
                     var contentType = ScrapeHandler.GetContentType(acceptHeaders);
 
                     response.ContentType = contentType;
@@ -75,7 +71,7 @@ namespace Prometheus.Client.Owin
         /// </summary>
         public static IAppBuilder UsePrometheusServer(this IAppBuilder app)
         {
-            return UsePrometheusServer(app, null);
+            return UsePrometheusServer(app, new PrometheusOptions());
         }
 
         /// <summary>
@@ -83,9 +79,6 @@ namespace Prometheus.Client.Owin
         /// </summary>
         public static IAppBuilder UsePrometheusServer(this IAppBuilder app, PrometheusOptions options)
         {
-            if (options == null)
-                options = new PrometheusOptions();
-
             if (options.CollectorRegistryInstance == CollectorRegistry.Instance)
             {
                 if (options.Collectors != null && !options.Collectors.Any() && options.UseDefaultCollectors)
