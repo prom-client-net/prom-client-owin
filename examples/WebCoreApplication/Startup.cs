@@ -38,7 +38,10 @@ namespace WebCoreApplication
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
 
-            app.UsePrometheusServer();
+            app.UsePrometheusServer(new PrometheusOptions()
+            {
+                UseDefaultCollectors = false // not use DotNetStatsCollector
+            });
 
             app.UseMvc();
         }

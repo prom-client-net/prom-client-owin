@@ -7,15 +7,15 @@ namespace Prometheus.Client.Owin
     /// <summary>
     ///     All default Collector
     /// </summary>
-    public class CollectorLocator
+    public class DefaultCollectors
     {
         /// <summary>
         ///     Get default Collector
         /// </summary>
-        public IEnumerable<IOnDemandCollector> Get()
+        public static IEnumerable<IOnDemandCollector> Get()
         {
             yield return new DotNetStatsCollector();
-#if !COREFX
+#if !NETSTANDART13
             if (Environment.OSVersion.Platform != PlatformID.Unix)
                 yield return new WindowsDotNetStatsCollector();
 #endif

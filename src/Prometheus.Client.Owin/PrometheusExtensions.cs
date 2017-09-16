@@ -1,13 +1,12 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
 using Prometheus.Client.Collectors;
-#if COREFX
+
+#if NETSTANDART13
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Primitives;
-
 #else
 using Owin;
-
 #endif
 
 namespace Prometheus.Client.Owin
@@ -17,20 +16,28 @@ namespace Prometheus.Client.Owin
     /// </summary>
     public static class PrometheusExtensions
     {
-#if COREFX
+#if NETSTANDART13
 
         /// <summary>
         ///     Add PrometheusServer request execution pipeline.
         /// </summary>
-        public static IApplicationBuilder UsePrometheusServer(this IApplicationBuilder app, PrometheusOptions options = null)
+        public static IApplicationBuilder UsePrometheusServer(this IApplicationBuilder app)
+        {
+            return UsePrometheusServer(app, null);
+        }
+        
+        /// <summary>
+        ///     Add PrometheusServer request execution pipeline.
+        /// </summary>
+        public static IApplicationBuilder UsePrometheusServer(this IApplicationBuilder app, PrometheusOptions options)
         {
             if (options == null)
                 options = new PrometheusOptions();
 
             if (options.CollectorRegistryInstance == CollectorRegistry.Instance)
             {
-                if (options.Collectors != null && !options.Collectors.Any() && options.CollectorLocator != null)
-                    options.Collectors.AddRange(options.CollectorLocator.Get());
+                if (options.Collectors != null && !options.Collectors.Any() && options.UseDefaultCollectors)
+                    options.Collectors.AddRange(DefaultCollectors.Get());
 
                 CollectorRegistry.Instance.RegisterOnDemandCollectors(options.Collectors);
             }
@@ -72,8 +79,8 @@ namespace Prometheus.Client.Owin
 
             if (options.CollectorRegistryInstance == CollectorRegistry.Instance)
             {
-                if (options.Collectors != null && !options.Collectors.Any() && options.CollectorLocator != null)
-                    options.Collectors.AddRange(options.CollectorLocator.Get());
+                if (options.Collectors != null && !options.Collectors.Any() && options.UseDefaultCollectors)
+                    options.Collectors.AddRange(DefaultCollectors.Get());
 
                 CollectorRegistry.Instance.RegisterOnDemandCollectors(options.Collectors);
             }
@@ -103,7 +110,6 @@ namespace Prometheus.Client.Owin
 
             return app;
         }
-
 #endif
     }
 }

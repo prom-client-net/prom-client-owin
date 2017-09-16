@@ -4,7 +4,7 @@
     <Description>An Owin handler for the Prometheus.Client</Description>
     <Copyright>2017 © Sergey Kuznetsov</Copyright>
     <AssemblyTitle>Prometheus.Client.Owin</AssemblyTitle>
-    <VersionPrefix>1.1.0</VersionPrefix>
+    <VersionPrefix>1.2.0</VersionPrefix>
     <Authors>Sergey Kuznetsov</Authors>
     <TargetFrameworks>net45;netstandard1.3</TargetFrameworks>
     <AssemblyName>Prometheus.Client.Owin</AssemblyName>
@@ -26,15 +26,11 @@
   </ItemGroup>
 
   <PropertyGroup Condition=" '$(TargetFramework)' == 'netstandard1.3' ">
-    <DefineConstants>$(DefineConstants);COREFX</DefineConstants>
+    <DefineConstants>$(DefineConstants);NETSTANDART13</DefineConstants>
   </PropertyGroup>
 
-  <ItemGroup Condition=" '$(TargetFramework)' == 'netstandard1.3' ">
-
-  </ItemGroup>
-
   <ItemGroup>
-    <PackageReference Include="Prometheus.Client" Version="1.1.0" />
+    <PackageReference Include="Prometheus.Client" Version="1.1.2" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' == 'netstandard1.3'">

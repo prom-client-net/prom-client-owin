@@ -22,10 +22,10 @@ namespace Prometheus.Client.Owin
         ///     IOnDemandCollectors
         /// </summary>
         public List<IOnDemandCollector> Collectors { get; set; } = new List<IOnDemandCollector>();
-
+        
         /// <summary>
-        ///     CollectorLocator for default Collectors
+        ///     Use default collectors
         /// </summary>
-        public CollectorLocator CollectorLocator { get; set; } = new CollectorLocator();
+        public bool UseDefaultCollectors { get; set; } = true;
     }
 }
