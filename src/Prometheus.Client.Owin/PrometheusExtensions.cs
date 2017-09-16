@@ -69,10 +69,19 @@ namespace Prometheus.Client.Owin
         }
 
 #else
+
         /// <summary>
         ///     Add PrometheusServer request execution pipeline.
         /// </summary>
-        public static IAppBuilder UsePrometheusServer(this IAppBuilder app, PrometheusOptions options = null)
+        public static IAppBuilder UsePrometheusServer(this IAppBuilder app)
+        {
+            return UsePrometheusServer(app, null);
+        }
+
+        /// <summary>
+        ///     Add PrometheusServer request execution pipeline.
+        /// </summary>
+        public static IAppBuilder UsePrometheusServer(this IAppBuilder app, PrometheusOptions options)
         {
             if (options == null)
                 options = new PrometheusOptions();

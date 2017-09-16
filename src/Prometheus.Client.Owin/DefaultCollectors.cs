@@ -7,7 +7,7 @@ namespace Prometheus.Client.Owin
     /// <summary>
     ///     All default Collector
     /// </summary>
-    public class DefaultCollectors
+    public static class DefaultCollectors
     {
         /// <summary>
         ///     Get default Collector
