@@ -1,10 +1,7 @@
-﻿using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Prometheus.Client.Collectors;
-
 #if NETSTANDART13
 using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.Primitives;
 #else
 using Owin;
 #endif
@@ -25,19 +22,13 @@ namespace Prometheus.Client.Owin
         {
             return UsePrometheusServer(app, new PrometheusOptions());
         }
-        
+
         /// <summary>
         ///     Add PrometheusServer request execution pipeline.
         /// </summary>
         public static IApplicationBuilder UsePrometheusServer(this IApplicationBuilder app, PrometheusOptions options)
         {
-            if (options.CollectorRegistryInstance == CollectorRegistry.Instance)
-            {
-                if (options.Collectors != null && !options.Collectors.Any() && options.UseDefaultCollectors)
-                    options.Collectors.AddRange(DefaultCollectors.Get());
-
-                CollectorRegistry.Instance.RegisterOnDemandCollectors(options.Collectors);
-            }
+            RegisterCollectors(options);
 
             app.Map(string.Format("/{0}", options.MapPath), coreapp =>
             {
@@ -79,13 +70,7 @@ namespace Prometheus.Client.Owin
         /// </summary>
         public static IAppBuilder UsePrometheusServer(this IAppBuilder app, PrometheusOptions options)
         {
-            if (options.CollectorRegistryInstance == CollectorRegistry.Instance)
-            {
-                if (options.Collectors != null && !options.Collectors.Any() && options.UseDefaultCollectors)
-                    options.Collectors.AddRange(DefaultCollectors.Get());
-
-                CollectorRegistry.Instance.RegisterOnDemandCollectors(options.Collectors);
-            }
+            RegisterCollectors(options);
 
             app.Map($"/{options.MapPath}", coreapp =>
             {
@@ -113,5 +98,19 @@ namespace Prometheus.Client.Owin
             return app;
         }
 #endif
+        private static void RegisterCollectors(PrometheusOptions options)
+        {
+            if (options.UseDefaultCollectors)
+            {
+                var metricFactory = Metrics.DefaultFactory;
+                if (options.CollectorRegistryInstance != CollectorRegistry.Instance)
+                    metricFactory = new MetricFactory(options.CollectorRegistryInstance);
+
+                options.Collectors.AddRange(DefaultCollectors.Get(metricFactory));
+            }
+
+
+            options.CollectorRegistryInstance.RegisterOnDemandCollectors(options.Collectors);
+        }
     }
 }

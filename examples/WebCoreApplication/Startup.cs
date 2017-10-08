@@ -38,9 +38,17 @@ namespace WebCoreApplication
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
 
-            app.UsePrometheusServer(new PrometheusOptions()
+
+            app.UsePrometheusServer(new PrometheusOptions
             {
-                UseDefaultCollectors = false // not use DotNetStatsCollector
+                UseDefaultCollectors = false
+            });
+
+            app.UsePrometheusServer(new PrometheusOptions
+            {
+                UseDefaultCollectors = true,
+                MapPath = "custommetrics",
+                CollectorRegistryInstance = Global.MyCollectorRegister
             });
 
             app.UseMvc();

@@ -12,12 +12,12 @@ namespace Prometheus.Client.Owin
         /// <summary>
         ///     Get default Collector
         /// </summary>
-        public static IEnumerable<IOnDemandCollector> Get()
+        public static IEnumerable<IOnDemandCollector> Get(MetricFactory metricFactory)
         {
-            yield return new DotNetStatsCollector();
+            yield return new DotNetStatsCollector(metricFactory);
 #if !NETSTANDART13
             if (Environment.OSVersion.Platform != PlatformID.Unix)
-                yield return new WindowsDotNetStatsCollector();
+                yield return new WindowsDotNetStatsCollector(metricFactory);
 #endif
         }
     }
