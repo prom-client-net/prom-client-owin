@@ -15,7 +15,7 @@ namespace Prometheus.Client.Owin
         public static IEnumerable<IOnDemandCollector> Get(MetricFactory metricFactory)
         {
             yield return new DotNetStatsCollector(metricFactory);
-#if !NETSTANDART13
+#if !NETSTANDART
             if (Environment.OSVersion.Platform != PlatformID.Unix)
                 yield return new WindowsDotNetStatsCollector(metricFactory);
 #endif

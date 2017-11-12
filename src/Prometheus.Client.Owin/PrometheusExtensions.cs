@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 using Prometheus.Client.Collectors;
-#if NETSTANDART13
+#if NETSTANDART
 using Microsoft.AspNetCore.Builder;
 #else
 using Owin;
@@ -13,7 +13,7 @@ namespace Prometheus.Client.Owin
     /// </summary>
     public static class PrometheusExtensions
     {
-#if NETSTANDART13
+#if NETSTANDART
 
         /// <summary>
         ///     Add PrometheusServer request execution pipeline.
