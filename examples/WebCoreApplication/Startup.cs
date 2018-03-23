@@ -47,7 +47,7 @@ namespace WebCoreApplication
             app.UsePrometheusServer(new PrometheusOptions
             {
                 UseDefaultCollectors = true,
-                MapPath = "custommetrics",
+                MapPath = "/custommetrics",
                 CollectorRegistryInstance = Global.MyCollectorRegister
             });
 

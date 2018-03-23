@@ -3,7 +3,7 @@
     <Description>An Owin handler for the Prometheus.Client</Description>
     <Copyright>2017 © Sergey Kuznetsov</Copyright>
     <AssemblyTitle>Prometheus.Client.Owin</AssemblyTitle>
-    <VersionPrefix>1.4.1</VersionPrefix>
+    <VersionPrefix>1.5.0</VersionPrefix>
     <Authors>Sergey Kuznetsov</Authors>
     <TargetFrameworks>net45;netstandard1.3;netstandard2.0</TargetFrameworks>
     <AssemblyName>Prometheus.Client.Owin</AssemblyName>

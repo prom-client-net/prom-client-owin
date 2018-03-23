@@ -35,7 +35,7 @@ namespace Prometheus.Client.Owin
                 throw new ArgumentNullException(nameof(options));
 
             if (!options.MapPath.StartsWith("/"))
-                options.MapPath = "/" + options.MapPath;
+                throw new ArgumentException($"MapPath '{options.MapPath}' should start with '/'");
             
             RegisterCollectors(options);
 
@@ -85,8 +85,8 @@ namespace Prometheus.Client.Owin
             if (options == null)
                 throw new ArgumentNullException(nameof(options));
             
-            if (!options.MapPath.StartsWith("/"))
-                options.MapPath = "/" + options.MapPath;
+             if (!options.MapPath.StartsWith("/"))
+                throw new ArgumentException($"MapPath '{options.MapPath}' should start with '/'");
             
             RegisterCollectors(options);
 
@@ -123,10 +123,8 @@ namespace Prometheus.Client.Owin
             {
                 var metricFactory = Metrics.DefaultFactory;
                 if (options.CollectorRegistryInstance != CollectorRegistry.Instance)
-                {
                     metricFactory = new MetricFactory(options.CollectorRegistryInstance);
-                }
-
+                
                 options.Collectors.AddRange(DefaultCollectors.Get(metricFactory));
             }
 

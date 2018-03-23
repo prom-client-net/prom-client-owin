@@ -9,9 +9,9 @@ namespace Prometheus.Client.Owin
     public class PrometheusOptions
     {
         /// <summary>
-        ///     Url, default = "metrics"
+        ///     Url, default = "/metrics"
         /// </summary>
-        public string MapPath { get; set; } = "metrics";
+        public string MapPath { get; set; } = "/metrics";
 
         /// <summary>
         ///     CollectorRegistry intance
