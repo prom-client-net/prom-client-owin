@@ -5,7 +5,6 @@ using Prometheus.Client.Collectors;
 using Microsoft.AspNetCore.Builder;
 #else
 using Owin;
-
 #endif
 
 namespace Prometheus.Client.Owin
@@ -30,21 +29,17 @@ namespace Prometheus.Client.Owin
         public static IApplicationBuilder UsePrometheusServer(this IApplicationBuilder app, PrometheusOptions options)
         {        
             if (app == null)
-            {
                 throw new ArgumentNullException(nameof(app));
-            }
+            
             if (options == null)
-            {
                 throw new ArgumentNullException(nameof(options));
-            }
-            if (options.MapPath.StartsWith("/"))
-            {
-                throw new ArgumentException($"Path '{options.MapPath}' cannot start with '/'");
-            }
 
+            if (!options.MapPath.StartsWith("/"))
+                options.MapPath = "/" + options.MapPath;
+            
             RegisterCollectors(options);
 
-            app.Map(string.Format("/{0}", options.MapPath), coreapp =>
+            app.Map(options.MapPath, coreapp =>
             {
                 coreapp.Run(async context =>
                 {
@@ -85,21 +80,17 @@ namespace Prometheus.Client.Owin
         public static IAppBuilder UsePrometheusServer(this IAppBuilder app, PrometheusOptions options)
         {
             if (app == null)
-            {
                 throw new ArgumentNullException(nameof(app));
-            }
+            
             if (options == null)
-            {
                 throw new ArgumentNullException(nameof(options));
-            }
-            if (options.MapPath.StartsWith("/"))
-            {
-                throw new ArgumentException($"Path '{options.MapPath}' cannot start with '/'");
-            }
-
+            
+            if (!options.MapPath.StartsWith("/"))
+                options.MapPath = "/" + options.MapPath;
+            
             RegisterCollectors(options);
 
-            app.Map($"/{options.MapPath}", coreapp =>
+            app.Map(options.MapPath, coreapp =>
             {
                 coreapp.Run(async context =>
                 {
@@ -138,7 +129,6 @@ namespace Prometheus.Client.Owin
 
                 options.Collectors.AddRange(DefaultCollectors.Get(metricFactory));
             }
-
 
             options.CollectorRegistryInstance.RegisterOnDemandCollectors(options.Collectors);
         }
