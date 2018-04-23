@@ -1,13 +1,23 @@
 version: '{build}-{branch}'
 image: Visual Studio 2017
+
+skip_commits:
+  files:
+    - '**/*.md'
+
 build_script:
-- cmd: dotnet restore src\Prometheus.Client.Owin && dotnet pack src\Prometheus.Client.Owin -c Release --include-symbols
+- ps: .\build.ps1
+
+after_build:
+- ps: .\pack.ps1
+
 artifacts:
-- path: '**\*.nupkg'
-  name: All Nupkg
+- path: '**\artifacts\nuget\*.nupkg'
+  name: NuGet
+  
 deploy:
 - provider: NuGet
   api_key:
-    secure: vukCl5k+S4fJtqeYNiB9ufy/NUCw+60cPcqnPoqvykBjSo8Ub8QtEfZNN9qvj5Jh
+    secure: ElAeMRSkpq3xUZ1TbenrrObh1zB/p62I5ICs92heJnTvkcl4Znc5o36vCyqcOK49
   on:
     appveyor_repo_tag: true

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Prometheus.Client.Collectors;
 
 namespace Prometheus.Client.Owin
@@ -15,10 +14,7 @@ namespace Prometheus.Client.Owin
         public static IEnumerable<IOnDemandCollector> Get(MetricFactory metricFactory)
         {
             yield return new DotNetStatsCollector(metricFactory);
-#if !NETSTANDARD
-            if (Environment.OSVersion.Platform != PlatformID.Unix)
-                yield return new WindowsDotNetStatsCollector(metricFactory);
-#endif
+            yield return new WindowsDotNetStatsCollector(metricFactory);
         }
     }
 }
