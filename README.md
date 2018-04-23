@@ -20,9 +20,6 @@ Extension for [Prometheus.Client](https://github.com/PrometheusClientNet/Prometh
 
 public void Configuration(IAppBuilder app)
 {  
-    app.UsePrometheusServer(new PrometheusOptions()
-        {
-            MapPath = "api/metrics"
-        });         
+    app.UsePrometheusServer();         
 }
 ```

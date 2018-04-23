@@ -16,14 +16,17 @@ namespace Prometheus.Client.Owin
         /// </summary>
         public static IAppBuilder UsePrometheusServer(this IAppBuilder app)
         {
-            return UsePrometheusServer(app, new PrometheusOptions());
+            return UsePrometheusServer(app, null);
         }
 
         /// <summary>
         ///     Add PrometheusServer request execution pipeline.
         /// </summary>
-        public static IAppBuilder UsePrometheusServer(this IAppBuilder app, PrometheusOptions options)
+        public static IAppBuilder UsePrometheusServer(this IAppBuilder app, Action<PrometheusOptions> setupOptions)
         {
+            var options = new PrometheusOptions();
+            setupOptions?.Invoke(options);
+            
             if (app == null)
                 throw new ArgumentNullException(nameof(app));
             
