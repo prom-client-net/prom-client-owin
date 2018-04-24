@@ -7,14 +7,11 @@
 
 Extension for [Prometheus.Client](https://github.com/PrometheusClientNet/Prometheus.Client)
 
-## Quik start
+#### Installation:
 
+     dotnet add package Prometheus.Client.Owin
 
-#### Install:
-
-    PM> Install-Package Prometheus.Client.Owin
-
-#### .Net 4.5:
+#### Quik start:
 
 ```csharp
 
@@ -23,3 +20,13 @@ public void Configuration(IAppBuilder app)
     app.UsePrometheusServer();         
 }
 ```
+or
+```csharp
+public void Configuration(IAppBuilder app)
+{ 
+    app.UsePrometheusServer(q =>
+            {
+                q.MapPath = "/api/metrics";
+            });
+}
+ ```
