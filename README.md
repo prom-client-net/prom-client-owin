@@ -13,6 +13,8 @@ Extension for [Prometheus.Client](https://github.com/PrometheusClientNet/Prometh
 
 #### Quik start:
 
+There are [Examples](https://github.com/PrometheusClientNet/Prometheus.Client.Examples/tree/master/Middleware/WebOwin_4.5)
+
 ```csharp
 
 public void Configuration(IAppBuilder app)
