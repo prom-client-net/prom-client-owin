@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Prometheus.Client.Collectors;
+using Prometheus.Client.Collectors.Abstractions;
 
 namespace Prometheus.Client.Owin
 {
@@ -14,7 +15,7 @@ namespace Prometheus.Client.Owin
         public string MapPath { get; set; } = "/metrics";
 
         /// <summary>
-        ///     CollectorRegistry intance
+        ///     CollectorRegistry instance
         /// </summary>
         public ICollectorRegistry CollectorRegistryInstance { get; set; } = CollectorRegistry.Instance;
 

@@ -10,7 +10,6 @@ namespace Prometheus.Client.Owin
     /// </summary>
     public static class PrometheusExtensions
     {
-
         /// <summary>
         ///     Add PrometheusServer request execution pipeline.
         /// </summary>
@@ -42,19 +41,11 @@ namespace Prometheus.Client.Owin
             {
                 coreapp.Run(async context =>
                 {
-                    var req = context.Request;
                     var response = context.Response;
-
-                    var acceptHeader = req.Headers.Get("Accept");
-                    var acceptHeaders = acceptHeader?.Split(',');
-                    var contentType = ScrapeHandler.GetContentType(acceptHeaders);
-
-                    response.ContentType = contentType;
-
+                    
                     using (var outputStream = response.Body)
                     {
-                        var collected = options.CollectorRegistryInstance.CollectAll();
-                        ScrapeHandler.ProcessScrapeRequest(collected, contentType, outputStream);
+                        ScrapeHandler.Process(options.CollectorRegistryInstance, outputStream);
                     }
 
                     await Task.FromResult(0).ConfigureAwait(false);
