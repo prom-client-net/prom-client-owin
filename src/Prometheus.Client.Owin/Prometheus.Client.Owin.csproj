@@ -3,7 +3,7 @@
     <Description>Middleware for the Prometheus.Client</Description>
     <Copyright>2018 © Sergey Kuznetsov</Copyright>
     <AssemblyTitle>Prometheus.Client.Owin</AssemblyTitle>
-    <VersionPrefix>2.1.0</VersionPrefix>
+    <VersionPrefix>2.1.1</VersionPrefix>
     <Authors>Sergey Kuznetsov</Authors>
     <TargetFrameworks>net45</TargetFrameworks>
     <AssemblyName>Prometheus.Client.Owin</AssemblyName>
