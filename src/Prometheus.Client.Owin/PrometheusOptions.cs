@@ -17,12 +17,7 @@ namespace Prometheus.Client.Owin
         /// <summary>
         ///     CollectorRegistry instance
         /// </summary>
-        public ICollectorRegistry CollectorRegistryInstance { get; set; } = CollectorRegistry.Instance;
-
-        /// <summary>
-        ///     IOnDemandCollectors
-        /// </summary>
-        public List<IOnDemandCollector> Collectors { get; set; } = new List<IOnDemandCollector>();
+        public ICollectorRegistry CollectorRegistryInstance { get; set; } = Metrics.DefaultCollectorRegistry;
         
         /// <summary>
         ///     Use default collectors

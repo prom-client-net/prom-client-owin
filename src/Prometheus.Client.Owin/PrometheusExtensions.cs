@@ -32,10 +32,11 @@ namespace Prometheus.Client.Owin
             if (options == null)
                 throw new ArgumentNullException(nameof(options));
             
-             if (!options.MapPath.StartsWith("/"))
+            if (!options.MapPath.StartsWith("/"))
                 throw new ArgumentException($"MapPath '{options.MapPath}' should start with '/'");
             
-            RegisterCollectors(options);
+            if (options.UseDefaultCollectors)
+                options.CollectorRegistryInstance.UseDefaultCollectors();
 
             app.Map(options.MapPath, coreapp =>
             {
@@ -46,7 +47,7 @@ namespace Prometheus.Client.Owin
                     
                     using (var outputStream = response.Body)
                     {
-                        ScrapeHandler.Process(options.CollectorRegistryInstance, outputStream);
+                        await ScrapeHandler.ProcessAsync(options.CollectorRegistryInstance, outputStream);
                     }
 
                     await Task.FromResult(0).ConfigureAwait(false);
@@ -54,21 +55,6 @@ namespace Prometheus.Client.Owin
             });
 
             return app;
-        }
-
-
-        private static void RegisterCollectors(PrometheusOptions options)
-        {
-            if (options.UseDefaultCollectors)
-            {
-                var metricFactory = Metrics.DefaultFactory;
-                if (options.CollectorRegistryInstance != CollectorRegistry.Instance)
-                    metricFactory = new MetricFactory(options.CollectorRegistryInstance);
-                
-                options.Collectors.AddRange(DefaultCollectors.Get(metricFactory));
-            }
-
-            options.CollectorRegistryInstance.RegisterOnDemandCollectors(options.Collectors);
         }
     }
 }
