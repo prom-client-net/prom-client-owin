@@ -1,4 +1,4 @@
-version: '{build}-{branch}'
+version: '{branch}-build{build}'
 image: Visual Studio 2017
 
 skip_commits:
@@ -6,18 +6,30 @@ skip_commits:
     - '**/*.md'
 
 build_script:
-- pwsh: dotnet build -c Release
+  - pwsh: dotnet build -c Release
 
 after_build:
-- pwsh: .\pack.ps1
+  - pwsh: .\pack.ps1
 
 artifacts:
-- path: '**\artifacts\nuget\*.nupkg'
-  name: Nuget
+  - path: '**/artifacts/nuget/*.nupkg'
+    name: NuGet
+  - path: '**/artifacts/myget/*.nupkg'
+    name: MyGet
 
 deploy:
-- provider: NuGet
-  api_key:
-    secure: ElAeMRSkpq3xUZ1TbenrrObh1zB/p62I5ICs92heJnTvkcl4Znc5o36vCyqcOK49
-  on:
-    appveyor_repo_tag: true
+  - provider: NuGet
+    api_key:
+      secure: ElAeMRSkpq3xUZ1TbenrrObh1zB/p62I5ICs92heJnTvkcl4Znc5o36vCyqcOK49
+    on:
+      APPVEYOR_REPO_TAG: true
+
+  - provider: NuGet
+    server: https://www.myget.org/F/prometheus-client-net/api/v2/package
+    api_key:
+      secure: DvXZQgy0wcMjR87Zt1qBB9YaDmEiAAiylRxVFfnvkYmfD+oYUetgCi1B036DJZGF
+    symbol_server: https://www.myget.org/F/prometheus-client-net/symbols/api/v2/package
+    artifact: MyGet
+    on:
+      branch: master
+      APPVEYOR_REPO_TAG: false
