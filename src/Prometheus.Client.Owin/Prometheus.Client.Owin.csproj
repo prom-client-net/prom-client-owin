@@ -11,7 +11,7 @@
     <PackageTags>prometheus;metrics</PackageTags>
     <PackageIconUrl>https://image.ibb.co/k4Sc0k/prometheus.png</PackageIconUrl>
     <PackageProjectUrl>https://github.com/PrometheusClientNet/Prometheus.Client.Owin</PackageProjectUrl>
-    <PackageLicenseUrl>https://opensource.org/licenses/MIT</PackageLicenseUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/PrometheusClientNet/Prometheus.Client.Owin</RepositoryUrl>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
