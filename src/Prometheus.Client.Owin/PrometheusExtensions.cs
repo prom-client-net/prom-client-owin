@@ -1,7 +1,6 @@
-﻿using System;
-using System.Threading.Tasks;
-using Prometheus.Client.Collectors;
+using System;
 using Owin;
+using Prometheus.Client.Collectors;
 
 namespace Prometheus.Client.Owin
 {
@@ -47,10 +46,8 @@ namespace Prometheus.Client.Owin
                     
                     using (var outputStream = response.Body)
                     {
-                        await ScrapeHandler.ProcessAsync(options.CollectorRegistryInstance, outputStream);
+                        await ScrapeHandler.ProcessAsync(options.CollectorRegistryInstance, outputStream).ConfigureAwait(false);
                     }
-
-                    await Task.FromResult(0).ConfigureAwait(false);
                 });
             });
 
