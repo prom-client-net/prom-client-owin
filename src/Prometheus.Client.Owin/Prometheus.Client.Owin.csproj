@@ -19,7 +19,7 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.Owin" Version="4.0.1" />
-    <PackageReference Include="Prometheus.Client" Version="3.0.0" />
+    <PackageReference Include="Prometheus.Client" Version="3.0.1" />
     <Reference Include="System" />
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
