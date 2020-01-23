@@ -1,9 +1,5 @@
 version: '{branch}-build{build}'
-image: Visual Studio 2017
-
-skip_commits:
-  files:
-    - '**/*.md'
+image: Visual Studio 2019
 
 build_script:
   - pwsh: dotnet build -c Release

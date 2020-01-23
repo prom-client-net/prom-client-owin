@@ -3,13 +3,13 @@
     <Description>Middleware for the Prometheus.Client</Description>
     <Copyright>2019 © Sergey Kuznetsov</Copyright>
     <AssemblyTitle>Prometheus.Client.Owin</AssemblyTitle>
-    <VersionPrefix>3.0.2</VersionPrefix>
+    <VersionPrefix>3.1.0</VersionPrefix>
     <Authors>Sergey Kuznetsov</Authors>
-    <TargetFrameworks>net46</TargetFrameworks>
+    <TargetFramework>net46</TargetFramework>
     <AssemblyName>Prometheus.Client.Owin</AssemblyName>
     <PackageId>Prometheus.Client.Owin</PackageId>
     <PackageTags>prometheus;metrics</PackageTags>
-    <PackageIconUrl>https://image.ibb.co/k4Sc0k/prometheus.png</PackageIconUrl>
+    <PackageIcon>icon.png</PackageIcon>
     <PackageProjectUrl>https://github.com/PrometheusClientNet/Prometheus.Client.Owin</PackageProjectUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <RepositoryType>git</RepositoryType>
@@ -18,8 +18,11 @@
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.Owin" Version="4.0.1" />
-    <PackageReference Include="Prometheus.Client" Version="3.0.1" />
+    <None Include="../../icon.png" Pack="true" Visible="false" PackagePath="" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Owin" Version="4.1.0" />
+    <PackageReference Include="Prometheus.Client" Version="[3.1.0,4.0.0)" />
     <Reference Include="System" />
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
