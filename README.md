@@ -1,9 +1,7 @@
 # Prometheus.Client.Owin
 
-[![MyGet](https://img.shields.io/myget/prometheus-client-net/vpre/Prometheus.Client.Owin.svg?label=myget)](https://www.myget.org/feed/prometheus-client-net/package/nuget/Prometheus.Client.Owin)
 [![NuGet](https://img.shields.io/nuget/v/Prometheus.Client.Owin.svg)](https://www.nuget.org/packages/Prometheus.Client.Owin)
 [![NuGet](https://img.shields.io/nuget/dt/Prometheus.Client.Owin.svg)](https://www.nuget.org/packages/Prometheus.Client.Owin)
-[![Build status](https://ci.appveyor.com/api/projects/status/mi4ylkkw9j3ovvo9/branch/master?svg=true)](https://ci.appveyor.com/project/PrometheusClientNet/prometheus-client-owin/branch/master)
 [![License MIT](https://img.shields.io/badge/license-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
 Extension for [Prometheus.Client](https://github.com/PrometheusClientNet/Prometheus.Client)
