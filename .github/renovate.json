@@ -1,0 +1,28 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    ":dependencyDashboard",
+    ":semanticPrefixFixDepsChoreOthers",
+    "group:monorepos",
+    "workarounds:all"
+  ],
+  "labels": [
+    "dependencies"
+  ],
+  "assignees": [
+    "@phnx47"
+  ],
+  "ignoreDeps": [
+    "System.Text.Encodings.Web",
+    "xunit.runner.visualstudio"
+  ],
+  "packageRules": [
+    {
+      "automerge": true,
+      "matchSourceUrlPrefixes": [
+        "https://github.com/coverlet-coverage"
+      ],
+      "groupName": "coverlet packages"
+    }
+  ]
+}

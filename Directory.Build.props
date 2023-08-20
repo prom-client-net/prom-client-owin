@@ -1,0 +1,37 @@
+<Project>
+  <PropertyGroup>
+    <LangVersion>11.0</LangVersion>
+    <Authors>prom-client-net contributors</Authors>
+    <Copyright>Copyright © prom-client-net</Copyright>
+    <PackageId>$(MSBuildProjectName)</PackageId>
+    <PackageTags>prometheus;metrics</PackageTags>
+    <PackageIcon>icon.png</PackageIcon>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <RepositoryType>git</RepositoryType>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <SignAssembly>true</SignAssembly>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <PackageOutputPath>nupkgs</PackageOutputPath>
+    <AssemblyOriginatorKeyFile>$(SolutionDir)$(SolutionName).snk</AssemblyOriginatorKeyFile>
+    <CodeAnalysisRuleSet>$(SolutionDir).ruleset</CodeAnalysisRuleSet>
+    <NoWarn>CS1591;NETSDK1138</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="$(SolutionDir)icon.png" Visible="false" Pack="true" PackagePath="" />
+    <None Include="$(SolutionDir)README.md" Visible="false" Pack="true" PackagePath="" />
+    <AdditionalFiles Include="$(SolutionDir)stylecop.json" Visible="false">
+      <Link>stylecop.json</Link>
+    </AdditionalFiles>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All" />
+    <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,71 @@
+repository:
+  topics: metrics, prometheus, prometheus-client
+  has_issues: true
+  has_projects: false
+  has_wiki: false
+  has_downloads: true
+  default_branch: main
+  allow_squash_merge: true
+  allow_merge_commit: true
+  allow_rebase_merge: true
+  allow_auto_merge: true
+  delete_branch_on_merge: true
+  enable_automated_security_fixes: false
+  enable_vulnerability_alerts: true
+
+labels:
+  - name: dependencies
+    color: 0052CC
+    description:
+
+  - name: bug
+    color: D73A4A
+    description:
+
+  - name: documentation
+    color: 0075CA
+    description:
+
+  - name: duplicate
+    color: CFD3D7
+    description:
+
+  - name: enhancement
+    color: A2EEEF
+    description:
+
+  - name: good first issue
+    color: 7057FF
+    description:
+
+  - name: help wanted
+    color: 008672
+    description:
+
+  - name: invalid
+    color: E4E669
+    description:
+
+  - name: question
+    color: D876E3
+    description:
+
+  - name: wontfix
+    color: FFFFFF
+    description:
+
+  - name: vulnerability
+    color: D1260F
+    description:
+
+  - name: sync
+    color: 6E81A3
+    description:
+
+collaborators:
+  - username: phnx47-bot
+    # Direct push to 'main' branch. Try integrate automerge like this https://github.com/marketplace/actions/enable-github-automerge
+    permission: admin
+teams:
+  - name: devs
+    permission: maintain
