@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <Description>Middleware for the Prometheus.Client</Description>
-    <TargetFramework>net46</TargetFramework>
+    <TargetFramework>net462</TargetFramework>
     <RepositoryUrl>https://github.com/prom-client-net/prom-client-owin</RepositoryUrl>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
