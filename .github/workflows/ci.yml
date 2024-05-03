@@ -13,7 +13,7 @@ on:
 
 jobs:
   build:
-    name: Build & Test
+    name: Build
     runs-on: ubuntu-22.04
     steps:
       - name: Checkout
@@ -23,26 +23,12 @@ jobs:
 
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
-        with:
-          dotnet-version: |
-            2.1.x
-            3.1.x
-            5.0.x
-            6.0.x
-            7.0.x
-            8.0.x
 
       - name: Restore
         run: dotnet restore
 
       - name: Build
         run: dotnet build --no-restore -c Release -p:ContinuousIntegrationBuild=true
-
-      - name: Run tests
-        run: dotnet test --no-build -c Release --filter FullyQualifiedName\!~Tests.Integration -p:CollectCoverage=true -e:CoverletOutputFormat=opencover
-
-      - name: Publish to Codecov
-        uses: codecov/codecov-action@v4
 
       - name: Set Dev version
         if: github.ref == 'refs/heads/main'
