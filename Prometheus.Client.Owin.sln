@@ -3,20 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26228.4
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{D994EEE1-3786-4FDF-8A49-76D8B9819A29}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Prometheus.Client.Owin", "src\Prometheus.Client.Owin\Prometheus.Client.Owin.csproj", "{1A520089-1C20-4ACF-B4F6-B7D471297D78}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{0E973217-B418-46DC-AB9E-62916AECF6F4}"
-ProjectSection(SolutionItems) = preProject
-	.gitattributes = .gitattributes
-	.gitignore = .gitignore
-	appveyor.yml = appveyor.yml
-	LICENSE = LICENSE
-	README.md = README.md
-	pack.ps1 = pack.ps1
-	.editorconfig = .editorconfig
-EndProjectSection
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Prometheus.Client.Owin", "src\Prometheus.Client.Owin.csproj", "{952E30CA-93F8-4BA0-8916-E66036EFAE49}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,15 +11,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{1A520089-1C20-4ACF-B4F6-B7D471297D78}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1A520089-1C20-4ACF-B4F6-B7D471297D78}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1A520089-1C20-4ACF-B4F6-B7D471297D78}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1A520089-1C20-4ACF-B4F6-B7D471297D78}.Release|Any CPU.Build.0 = Release|Any CPU
+		{952E30CA-93F8-4BA0-8916-E66036EFAE49}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{952E30CA-93F8-4BA0-8916-E66036EFAE49}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{952E30CA-93F8-4BA0-8916-E66036EFAE49}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{952E30CA-93F8-4BA0-8916-E66036EFAE49}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{1A520089-1C20-4ACF-B4F6-B7D471297D78} = {D994EEE1-3786-4FDF-8A49-76D8B9819A29}
 	EndGlobalSection
 EndGlobal
