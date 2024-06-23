@@ -12,23 +12,29 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
-    name: Build
-    runs-on: ubuntu-22.04
+  build-windows:
+    name: Build, Test & Pack (Windows)
+    runs-on: windows-2022
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      - name: Setup .NET
-        uses: actions/setup-dotnet@v4
-
       - name: Restore
         run: dotnet restore
 
       - name: Build
         run: dotnet build --no-restore -c Release -p:ContinuousIntegrationBuild=true
+
+      - name: Run tests
+        run: dotnet test --no-build -c Release -e:CoverletOutputFormat=opencover
+
+      - name: Publish to Codecov
+        uses: codecov/codecov-action@v4
+        with:
+          fail_ci_if_error: true
+          token: ${{ secrets.CODECOV_TOKEN }}
 
       - name: Set Dev version
         if: github.ref == 'refs/heads/main'
@@ -56,9 +62,9 @@ jobs:
 
   github:
     name: Deploy to GitHub
-    needs: [build]
+    needs: [build-windows]
     if: github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/tags/v')
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     steps:
       - name: Download artifacts
         uses: actions/download-artifact@v4
@@ -69,9 +75,9 @@ jobs:
 
   nuget:
     name: Deploy to NuGet
-    needs: [build]
+    needs: [build-windows]
     if: startsWith(github.ref, 'refs/tags/v')
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     steps:
       - name: Download artifacts
         uses: actions/download-artifact@v4
