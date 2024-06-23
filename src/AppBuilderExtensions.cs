@@ -1,0 +1,56 @@
+using System;
+using Owin;
+using Prometheus.Client.Collectors;
+
+namespace Prometheus.Client.Owin;
+
+/// <summary>
+///     AppBuilder Extensions
+/// </summary>
+public static class AppBuilderExtensions
+{
+    /// <summary>
+    ///     Add PrometheusServer request execution pipeline.
+    /// </summary>
+    public static IAppBuilder UsePrometheusServer(this IAppBuilder app)
+    {
+        return UsePrometheusServer(app, null);
+    }
+
+    /// <summary>
+    ///     Add PrometheusServer request execution pipeline.
+    /// </summary>
+    public static IAppBuilder UsePrometheusServer(this IAppBuilder app, Action<PrometheusOptions> setupOptions)
+    {
+        var options = new PrometheusOptions();
+        setupOptions?.Invoke(options);
+
+        if (app == null)
+            throw new ArgumentNullException(nameof(app));
+
+        if (options == null)
+            throw new ArgumentNullException(nameof(options));
+
+        if (!options.MapPath.StartsWith("/"))
+            throw new ArgumentException($"MapPath '{options.MapPath}' should start with '/'");
+
+        if (options.UseDefaultCollectors)
+            options.CollectorRegistryInstance.UseDefaultCollectors();
+
+        app.Map(options.MapPath, coreapp =>
+        {
+            coreapp.Run(async context =>
+            {
+                var response = context.Response;
+                response.ContentType = "text/plain; version=0.0.4";
+
+                using (var outputStream = response.Body)
+                {
+                    await ScrapeHandler.ProcessAsync(options.CollectorRegistryInstance, outputStream).ConfigureAwait(false);
+                }
+            });
+        });
+
+        return app;
+    }
+}
