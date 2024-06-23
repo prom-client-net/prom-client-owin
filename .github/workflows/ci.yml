@@ -25,13 +25,7 @@ jobs:
         run: dotnet build -c Release -p:ContinuousIntegrationBuild=true
 
       - name: Run tests
-        run: dotnet test --no-build -c Release -p:CollectCoverage=true -e:CoverletOutputFormat=opencover
-
-      - name: Publish to Codecov
-        uses: codecov/codecov-action@v4
-        with:
-          fail_ci_if_error: true
-          token: ${{ secrets.CODECOV_TOKEN }}
+        run: dotnet test --no-build -c Release
 
       - name: Set Dev version
         if: github.ref == 'refs/heads/main'
