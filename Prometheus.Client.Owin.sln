@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.26228.4
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Prometheus.Client.Owin", "src\Prometheus.Client.Owin.csproj", "{952E30CA-93F8-4BA0-8916-E66036EFAE49}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Prometheus.Client.Owin.Tests", "tests\Prometheus.Client.Owin.Tests.csproj", "{0D9A71C1-DC13-43A8-95D6-B25CF019D6A0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{952E30CA-93F8-4BA0-8916-E66036EFAE49}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{952E30CA-93F8-4BA0-8916-E66036EFAE49}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{952E30CA-93F8-4BA0-8916-E66036EFAE49}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D9A71C1-DC13-43A8-95D6-B25CF019D6A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D9A71C1-DC13-43A8-95D6-B25CF019D6A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D9A71C1-DC13-43A8-95D6-B25CF019D6A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D9A71C1-DC13-43A8-95D6-B25CF019D6A0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
