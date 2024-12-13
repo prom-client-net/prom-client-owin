@@ -1,19 +1,15 @@
-name: CI Windows Only
+name: Build Win
 
 on:
-  push:
-    branches:
-      - "main"
-    tags:
-      - "v*"
   pull_request:
     branches:
       - "main"
   workflow_dispatch:
+  workflow_call:
 
 jobs:
-  build-windows:
-    name: Build, Test & Pack (Windows)
+  build-win:
+    name: Build, Test & Pack
     runs-on: windows-2022
     steps:
       - name: Checkout
@@ -52,29 +48,3 @@ jobs:
         with:
           name: nupkgs
           path: src/**/*nupkg
-
-  github:
-    name: Deploy to GitHub
-    needs: [build-windows]
-    if: github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/tags/v')
-    runs-on: ubuntu-24.04
-    steps:
-      - name: Download artifacts
-        uses: actions/download-artifact@v4
-        with:
-          name: nupkgs
-      - name: Push to pkg.github.com
-        run: dotnet nuget push "**/*.nupkg" -s https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json -k ${{ secrets.GH_FULL_PAT }} --skip-duplicate
-
-  nuget:
-    name: Deploy to NuGet
-    needs: [build-windows]
-    if: startsWith(github.ref, 'refs/tags/v')
-    runs-on: ubuntu-24.04
-    steps:
-      - name: Download artifacts
-        uses: actions/download-artifact@v4
-        with:
-          name: nupkgs
-      - name: Push to nuget.org
-        run: dotnet nuget push "**/*.nupkg" -s https://api.nuget.org/v3/index.json -k ${{ secrets.NUGET_DEPLOY_KEY }}
