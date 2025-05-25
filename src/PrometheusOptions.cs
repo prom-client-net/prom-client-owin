@@ -1,4 +1,4 @@
-using Prometheus.Client.Collectors.Abstractions;
+using Prometheus.Client.Collectors;
 
 namespace Prometheus.Client.Owin
 {
@@ -16,7 +16,7 @@ namespace Prometheus.Client.Owin
         ///     CollectorRegistry instance
         /// </summary>
         public ICollectorRegistry CollectorRegistryInstance { get; set; } = Metrics.DefaultCollectorRegistry;
-        
+
         /// <summary>
         ///     Use default collectors
         /// </summary>
