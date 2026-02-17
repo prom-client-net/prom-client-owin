@@ -3,10 +3,11 @@
 [![ci](https://img.shields.io/github/actions/workflow/status/prom-client-net/prom-client-owin/ci.yml?branch=main&label=ci&logo=github&style=flat-square)](https://github.com/prom-client-net/prom-client-owin/actions/workflows/ci.yml)
 [![nuget](https://img.shields.io/nuget/v/Prometheus.Client.Owin?logo=nuget&style=flat-square)](https://www.nuget.org/packages/Prometheus.Client.Owin)
 [![nuget](https://img.shields.io/nuget/dt/Prometheus.Client.Owin?logo=nuget&style=flat-square)](https://www.nuget.org/packages/Prometheus.Client.Owin)
+[![codecov](https://img.shields.io/codecov/c/github/prom-client-net/prom-client-owin?logo=codecov&style=flat-square)](https://app.codecov.io/gh/prom-client-net/prom-client-owin)
 [![license](https://img.shields.io/github/license/prom-client-net/prom-client-owin?style=flat-square)](https://github.com/prom-client-net/prom-client-owin/blob/main/LICENSE)
-<!-- [![codecov](https://img.shields.io/codecov/c/github/prom-client-net/prom-client-owin?logo=codecov&style=flat-square)](https://app.codecov.io/gh/prom-client-net/prom-client-owin) -->
 
-Extension for [Prometheus.Client](https://github.com/PrometheusClientNet/Prometheus.Client)
+
+Extension for [Prometheus.Client](https://github.com/prom-client-net/prom-client)
 
 ## Installation
 
