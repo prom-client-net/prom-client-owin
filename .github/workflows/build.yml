@@ -17,6 +17,9 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest]
+    env:
+      DOTNET_NOLOGO: true
+      DOTNET_CLI_TELEMETRY_OPTOUT: true
 
     steps:
       - name: Checkout
@@ -25,6 +28,13 @@ jobs:
       - name: Build
         run: dotnet build -c Release
 
-      - name: Run tests without Coverage
+      - name: Run tests with Coverage
         if: startsWith(matrix.os, 'windows')
-        run: dotnet test --no-build -c Release
+        run: dotnet test --no-build -c Release -p:CollectCoverage=true -e:CoverletOutputFormat=opencover
+
+      - name: Publish to Codecov
+        if: startsWith(matrix.os, 'windows')
+        uses: codecov/codecov-action@v5
+        with:
+          fail_ci_if_error: true
+          token: ${{ secrets.CODECOV_TOKEN }}
