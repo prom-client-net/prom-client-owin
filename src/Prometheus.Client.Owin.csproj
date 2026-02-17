@@ -12,4 +12,7 @@
     <PackageReference Include="Microsoft.Owin" Version="4.2.3" />
     <PackageReference Include="Prometheus.Client" Version="6.2.0" />
   </ItemGroup>
+  <ItemGroup>
+    <InternalsVisibleTo Include="$(MSBuildProjectName).Tests, PublicKey=002400000480000094000000060200000024000052534131000400000100010041caadd333e3ab33aef75a4ff389f69bcdb49ea1f873b304643c9e7fb1617a6713177ccbac9c91e13ebc9c73a973c2d0d255c75ca511079329449a21fa766964bc5400645b3ad9b24726938efae549ffa65270c9e942c8c22bf7bfee89290cc355d4bf061fed3cd697498f11f90621ae5baf4f00b30b513568a4944e0658189f" />
+  </ItemGroup>
 </Project>
